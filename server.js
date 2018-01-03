@@ -64,6 +64,10 @@ app.get('/about',(req,res) => {
     });
 });
 
+app.get('/heroku',(req,res) => {
+    res.render('heroku.hbs');
+})
+
 app.listen(port,() => {
     console.log(`server start in port ${port}`);
 });
