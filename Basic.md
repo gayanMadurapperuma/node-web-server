@@ -46,13 +46,13 @@
   
 ```
 
-In `AWS CDK` have few command to deploy lambda function and test in real AWS lambda enviornment. 
+`AWS CDK` has a few commands to deploy the lambda function and test in an AWS lambda environment. 
 
-But If we need to do some small changes or fix some issue that we done in code, we have to redeply. It's not a efficient way to develop in tight scheduled enviroment. It may take some un acceptable time to deploy CDK application again, 
+But If we need to do some small changes or fix some issues that we have done in the code, we have to redeploy. It's not an efficient way to develop in a tightly scheduled environment. It may take some unacceptable time to deploy the CDK application again. 
 
 With the `AWS SAM command line interface (CLI)`, you can locally test and "step-through" debug your serverless applications before uploading your application to the AWS Cloud. You can verify whether your application is behaving as expected, debug what's wrong, and fix any issues, before going through the steps of packaging and deploying your application.
 
-> In here only consider about `Local Testing` lambda function.
+> Here only consider about `Local Testing` lambda function.
 
 ## AWS-CDK Application Lambda function Local Testing
 
@@ -70,7 +70,7 @@ With the `AWS SAM command line interface (CLI)`, you can locally test and "step-
     style testing fill: #fff
 ```
 
-let's consider below sample lambda function local testing that written in [Typescript](https://www.typescriptlang.org/)
+let's consider below sample lambda function local testing that is written in [Typescript](https://www.typescriptlang.org/)
 
 ```js
 import { APIGatewayEvent } from 'aws-lambda';
@@ -126,14 +126,14 @@ exports.handler = async function (event: APIGatewayEvent) {
 
 <!-- Normally we write all the lambda function inside the `lib` folder. -->
 
-there are few commands to deploy `AWS-CDK` Application.
+there are a few commands to deploy `AWS-CDK` Application.
 
 ```sh
-yarn build
-cdk synth
-cdk deploy
+$ yarn build
+$ cdk synth
+$ cdk deploy
 ```
-About lambda function testing without deploy, don't need to use `cdk deploy` command till finished all the lambda local testing. 
+About lambda function testing without deployment, don't need to use `cdk deploy` command till finished all the lambda local testing.  
 
 ```mermaid
 
@@ -151,13 +151,13 @@ About lambda function testing without deploy, don't need to use `cdk deploy` com
 
 ### [Invoke CDK lambda function locally Using SAM-CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-invoke.html)
 
-> Need to run `yarn build` and `cdk synth` every time when we done any changes in lambda function.
+> Need to run `yarn build` and `cdk synth` every time when we done any changes in the lambda function.
 
 AWS Lambda getting different payloads from different event sources, such as Amazon S3, Amazon API Gateway, and Amazon SNS, first need to identify from where invoke lambda function.
 
-In `SAM-CLI` have event generate feature to generate sample payloads for different event resources. use this [link](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-generate-event.html) for official documentation.
+In `SAM-CLI` have an event generate feature to generate sample payloads for different event resources. use this [link](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-generate-event.html) for official documentation.
 
-> For an example let's consider above lambda function invoke source is **ApiGateway**.
+> For example, let's consider the above lambda function invoke source is **ApiGateway**.
 
 **`Generating Sample Event`**
 
@@ -169,7 +169,7 @@ $ sam local generate-event apigateway aws-proxy --method GET
 ```sh
 $ sam local generate-event apigateway aws-proxy --method GET > ./event/sample-event.json
 ```
-This will save generated event directly to JSON file, 
+This will save generated event directly to a JSON file.
 > Note: SAM applicaiton all the events keep in event directory in root.
 
 **`Environment variable`**
@@ -241,10 +241,6 @@ REPORT RequestId: e4309037-96fc-4a12-a2a9-1de3c3831d32	Init Duration: 0.90 ms	Du
 
 using terminal logs we can identify issues on lambda function before deploy uisng sam local invoke. 
 
-***`Additinal Feature`***
-
-here will update port binding
-
 ### [VS code debugger attachment](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 
 1. First Install [AWS Toolkit for VS Code](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.aws-toolkit-vscode)
@@ -253,7 +249,7 @@ here will update port binding
     - Click **Create a launch.json file**
     - Select **AWS SAM: Debug Lambda Function Locally**
 
-Then you can see create `launch.json` file with multiple configuration, here is an simplified example
+Then you can see create a `launch.json` file with multiple configurations, here is a simplified example
 
 ```json
 {
@@ -297,7 +293,7 @@ Then you can see create `launch.json` file with multiple configuration, here is 
     ]
 }
 ```
-when need to debug lambda function, need to change some values in above JSON. 
+when need to debug a specific lambda function, need to change some values in the above JSON that contain debug values for the target function. 
 
 **`Launch.JSON Properties`**
 
@@ -321,6 +317,9 @@ when need to debug lambda function, need to change some values in above JSON.
 1. Put some break point that same lambda function configured `launch.json` file.
 2. Navigate Navigate **RUN AND DEBUG**
 3. Click **Start Debugging**
-4. then we can debug specific lambda function as normal Node, express service debug in VS code.
+4. Then we can debug specific lambda functions as normal Node, express service debugs in VS code.
+
+
+|      **Written by Gayan Madurapperuma**       |
 
 
