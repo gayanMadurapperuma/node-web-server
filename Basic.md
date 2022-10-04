@@ -315,10 +315,13 @@ when need to debug a specific lambda function, need to change some values in the
 **`Run Debbger`**
 
 1. Put some break point that same lambda function configured `launch.json` file.
-2. Navigate Navigate **RUN AND DEBUG**
+2. Navigate **RUN AND DEBUG**
 3. Click **Start Debugging**
 4. Then we can debug specific lambda functions as normal Node, express service debugs in VS code.
 
+## Conclusion
+
+With AWS SAM CLI native support for AWS CDK. In this post, I show how to use the AWS SAM CLI to test locally and develop serverless applications seamlessly within an AWS CDK project. No longer is the AWS SAM CLI just for AWS SAM; instead, AWS SAM and AWS CDK are better together.
 
 |      **Written by Gayan Madurapperuma**       |
 
